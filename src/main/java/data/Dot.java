@@ -6,17 +6,16 @@ public class Dot{
     private final double y;
     private final double r;
     private boolean status;
-//    private String currentTime;
-//    private long executionTime;
+    private String currentTime;
+    private String executionTime;
 
 
-    public Dot(double x, double y, double r) {
+    public Dot(double x, double y, double r, String currentTime, String executionTime) {
         this.x = x;
         this.y = y;
         this.r = r;
-//        this.status = status;
-//        this.currentTime = currentTime;
-//        this.executionTime = executionTime;
+        this.currentTime = currentTime;
+        this.executionTime = executionTime;
     }
 
 
@@ -38,6 +37,6 @@ public class Dot{
     public void status(boolean inTheGraphic) {
         status = inTheGraphic;
     }
-//    public String getCurrentTime() { return currentTime; }
-//    public long getExecutionTime() { return executionTime; }
+    public String getCurrentTime() { return currentTime; }
+    public String getExecutionTime() { return executionTime; }
 }

@@ -26,15 +26,17 @@
         List<Dot> points = (List<Dot>) request.getSession().getAttribute("result");
     %>
     <%
-        if(points!=null){
+        if (points != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             for (Dot point : points) {
+                Date date = new Date(Long.parseLong(point.getCurrentTime()));
     %>
     <tr>
         <td><%= String.valueOf(point.getX()) %></td>
         <td><%= String.valueOf(point.getY()) %></td>
         <td><%= String.valueOf( point.getR()) %></td>
         <td><%= point.isStatus() ? "Попадание" : "Промах" %></td>
-        <td></td>
+        <td><%= sdf.format(date) %></td>
     </tr>
     <%
             }

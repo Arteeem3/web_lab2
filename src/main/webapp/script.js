@@ -43,17 +43,19 @@ document.querySelectorAll(".xButtons").forEach(element => {
 
 document.querySelectorAll(".radiobutton").forEach(element => {
     element.addEventListener("click", function (e) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = '#5f9ea0';
-        drawNet();
-        drawCoordinateLines();
-        ctx.translate(Xcanvas / 2, Ycanvas / 2);
-        drawCircle();
-        drawTriangle();
-        drawRectangle();
-        ctx.resetTransform();
-        writeText();
-        badMessage("Радиус был изменён");
+        for (let i = 0; i < 2; i++) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#5f9ea0';
+            drawNet();
+            drawCoordinateLines();
+            ctx.translate(Xcanvas / 2, Ycanvas / 2);
+            drawCircle();
+            drawTriangle();
+            drawRectangle();
+            ctx.resetTransform();
+            writeText();
+            badMessage("Радиус был изменён");
+        }
     });
 });
 
@@ -149,9 +151,13 @@ function appendData(item) {
     row.appendChild(Rcell);
 
     const status = document.createElement("td");
-
     item.status === true ? status.textContent = "Попадание" : status.textContent = "Промах";
     row.appendChild(status);
+
+    const timeCell = document.createElement("td");
+    const date = new Date(parseInt(item.currentTime));
+    timeCell.textContent = date.toLocaleTimeString("ru-RU");
+    row.appendChild(timeCell);
 
     body.prepend(row);
     thead.classList.add('visible');
